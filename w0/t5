@@ -1,0 +1,24 @@
+//Haetaan itse sivu
+GET /spa
+
+//Sivu on olemassa ja se palautetaan
+200 OK spa(.html?)
+
+//Haetaan html:ssä määritelty stylesheet.
+GET /main.css
+
+//Stylesheet löytyy ja se palautetaan.
+200 OK main.css
+
+//Haetaan html:ssä määritelty skripti.
+GET /spa.js
+
+200 OK spa.js
+
+GET data.json
+
+200 OK
+
+GET favicon.ico
+
+404 Not Found

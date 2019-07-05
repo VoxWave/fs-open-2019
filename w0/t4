@@ -1,0 +1,33 @@
+selain: POST /new_note Form data joka sisältää note: jotain
+
+//uudelleen ohjaa /notes osoitteeseen
+palvelin: 302 FOUND
+
+selain: GET /notes
+
+//vastauksessa notesin html
+palvelin: 200 OK
+
+//saadussa html:ssä link tagi main.css stylesheettiin joten se haetaan palvelimelta.
+selain: GET /main.css
+
+//stylesheet löytyy ja se palautetaan
+palvelin: 200 OK main.css
+
+//html:ssä on myös script tagi joten main.js skripti haetaan palvelimelta.
+selain: GET /main.js
+
+//skripti löytyy ja se palautetaan
+palvelin: 200 OK main.js
+
+//skripti ajetaan ja se hakee data.json tiedoston.
+selain: GET /data.json
+
+//data.json palautetaan onnistuneesti
+palvelin: 200 OK data.json
+
+//selain yrittää hakea faviconin
+selain: GET /favicon.ico
+
+//sitä ei löydy
+palvelin: 404 Not Found
