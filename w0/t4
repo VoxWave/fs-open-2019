@@ -26,7 +26,7 @@ selain: GET /data.json
 //data.json palautetaan onnistuneesti
 palvelin: 200 OK data.json
 
-//selain yrittää hakea faviconin
+//selain yrittää hakea faviconin sivustolle.
 selain: GET /favicon.ico
 
 //sitä ei löydy

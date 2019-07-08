@@ -1,24 +1,29 @@
 //Haetaan itse sivu
-GET /spa
+selain: GET /spa
 
 //Sivu on olemassa ja se palautetaan
-200 OK spa(.html?)
+palvelin: 200 OK spa(.html?)
 
 //Haetaan html:ssä määritelty stylesheet.
-GET /main.css
+selain: GET /main.css
 
 //Stylesheet löytyy ja se palautetaan.
-200 OK main.css
+palvelin: 200 OK main.css
 
 //Haetaan html:ssä määritelty skripti.
-GET /spa.js
+selain: GET /spa.js
 
-200 OK spa.js
+//Skripti löytyy ja palautetaan.
+selain: 200 OK spa.js
 
-GET data.json
+//Skripti lataa json tiedoston.
+selain: GET data.json
 
-200 OK
+//json tiedosto löytyy ja se palautetaan.
+palvelin: 200 OK data.json
 
-GET favicon.ico
+//Selain yrittää hakea faviconin sivustolle.
+selain: GET favicon.ico
 
-404 Not Found
+//Faviconia ei ole.
+palvelin: 404 Not Found

@@ -1,3 +1,5 @@
+//Uusi note lähetettään palvelimelle json muodossa.
 POST /new_note_spa {"content":"Huomenta","date":"2019-07-05T11:13:23.865Z"}
 
+//Viesti on luotu palvelimella onnistuneesti
 201 Created
