@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Hello = () => {
+const Hello = (props) => {
   return (
     <div>
-      <p>Hello world</p>
+      <p>Hello {props.name}, you are {props.age} years old</p>
     </div>
   )
 }
@@ -15,16 +15,16 @@ const App = () => {
   const b = 20
 
   return (
-    <div>
+    <>
       <h1>Greets</h1>
-      <p><Hello/> it is {now.toString()}</p>
+      <Hello/><p> it is {now.toString()}</p>
       <p>
         {a} plus {b} is {a + b}
       </p>
-      <Hello/>
-      <Hello/>
-      <Hello/>
-    </div>
+      <Hello name = "Voggo" age = {10 + 15}/>
+      <Hello name = "Veggo" age = {a + b}/>
+      <Hello name = "Viggo" age = {25}/>
+    </>
   )
 }
 
