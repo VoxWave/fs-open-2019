@@ -1,28 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Hello = (props) => {
-  const bornYear = () => {
-    const yearNow = new Date().getFullYear()
-    return yearNow - props.age
-  }
+const Hello = ({name, age}) => {
+  const bornYear = () => new Date().getFullYear() - age
   return (
     <div>
-      <p>Hello {props.name}, you are {props.age} years old</p>
-      <p>You were probably born in the year {bornYear}</p>
+      <p>Hello {name}, you are {age} years old</p>
+      <p>You were probably born in the year {bornYear()}</p>
     </div>
   )
 }
 
-const App = () => {
+const App = (props) => {
+  const {counter} = props
   const now = new Date()
   const a = 10
   const b = 20
 
   return (
     <>
+      <div>{counter}</div>
       <h1>Greets</h1>
-      <Hello/><p> it is {now.toString()}</p>
+      <Hello name="wee" age="64"/><p> it is {now.toString()}</p>
       <p>
         {a} plus {b} is {a + b}
       </p>
@@ -33,4 +32,6 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+let counter = 1
+
+ReactDOM.render(<App counter = {counter} />, document.getElementById('root'))
