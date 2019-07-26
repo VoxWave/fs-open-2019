@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "counter"
+		},
+		{
+			"path": "unicafe"
 		}
 	],
 	"settings": {}
