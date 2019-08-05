@@ -7,40 +7,62 @@ const randomIntFromRange = (min, max) => {
 
 const Button = ({handler, text}) => <button onClick={handler}>{text}</button>
 
-const DailyAnecdote = () => {
-
-}
-
-const MostVoted = () => {
-  
-}
-
-const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  const [scores, setScores] = useState(new Array(props.anecdotes.length).fill(0))
-  const setNextAnecdote = () => {
-    const index = randomIntFromRange(0, props.anecdotes.length-1);
-    setSelected(index)
-  }
-
-  const vote = () => {
-    const updatedScores = [...scores]
-    updatedScores[selected] += 1
-    setScores(updatedScores)
-  }
-
+const DailyAnecdote = ({anecdotes, selected, scores, setNextAnecdote, setScores}) => {
   return (
     <>
+      <h1>Anecdote of the day</h1>
       <div>
-        {props.anecdotes[selected]}
+        {anecdotes[selected]}
       </div>
       <div>
         Has {scores[selected]} votes.
       </div>
       <div>
         <Button handler={setNextAnecdote} text={'next anecdote'}/>
-        <Button handler={vote} text={'vote'}/>
+        <Button handler={vote(scores, selected, setScores)} text={'vote'}/>
       </div>
+    </>
+  )
+}
+
+const vote = (scores, selected, setScores) => () => {
+  const updatedScores = [...scores]
+  updatedScores[selected] += 1
+  setScores(updatedScores)
+}
+
+const MostVoted = ({anecdotes, scores}) => {
+  console.log(scores)
+  const mostVoted = scores.reduce(
+    (accumulator, currentValue, currentIndex) => {
+      if (accumulator[1] < currentValue) {
+        return [currentIndex, currentValue]
+      } else {
+        return accumulator
+      }
+    },
+    [-1,-1]
+  )
+
+  return <>
+    <h1>Most voted anecdote</h1>
+    <div>{anecdotes[mostVoted[0]]}</div>
+    <div>has {mostVoted[1]} votes</div>
+  </>
+}
+
+const App = ({anecdotes}) => {
+  const [selected, setSelected] = useState(0)
+  const [scores, setScores] = useState(new Array(anecdotes.length).fill(0))
+  const setNextAnecdote = () => {
+    const index = randomIntFromRange(0, anecdotes.length-1);
+    setSelected(index)
+  }
+
+  return (
+    <>
+      <DailyAnecdote anecdotes={anecdotes} selected={selected} scores={scores} setNextAnecdote={setNextAnecdote} setScores={setScores}/>
+      <MostVoted anecdotes={anecdotes} scores={scores}/>
     </>
   )
 }
