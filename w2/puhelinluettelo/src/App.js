@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-const Numbers = ({persons}) => {
-  return persons.filter(person => ).map(person => 
+const Numbers = ({persons, filter}) => {
+  return persons.filter(person => person.name.toLowerCase().includes(filter.toLowerCase())).map(person => 
     <div key={person.name}>{person.name} {person.number}</div>
   )
 }
